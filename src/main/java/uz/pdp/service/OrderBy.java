@@ -36,7 +36,7 @@ public class OrderBy extends HttpServlet {
             } else if (sortType.equals("statusInProgress")) {
                 sqlQuery = "select t.id, t.userid, t.title, t.description, t.status, t.deadline, t.createdat, t.updatedat from tasks t join users u on u.id = t.userid where u.email = ? and t.status = false";
             } else {
-                sqlQuery = "select t.id, t.userid, t.title, t.description, t.status, t.deadline, t.createdat, t.updatedat from tasks t join users u on u.id = t.userid where u.email = ? order by deadline";
+                sqlQuery = "select t.id, t.userid, t.title, t.description, t.status, t.deadline, t.createdat, t.updatedat from tasks t join users u on u.id = t.userid where u.email = ? order by status, deadline";
             }
             preparedStatement = connection.prepareStatement(sqlQuery);
             preparedStatement.setString(1, userEmail);
